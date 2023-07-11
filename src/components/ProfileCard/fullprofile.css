@@ -1,0 +1,144 @@
+body{
+    background-color: #eff1f6bf;
+}
+.fullprofile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+
+}
+.fullprofile .icons{
+    display: flex;
+}
+.fullprofile .icons a{
+    padding: 10px;
+    width: 22px;
+    height: 22px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #ffe;
+    margin:5px;
+    margin-left: 0;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px 0px #aaa,1px 1px 5px 0px #aaa;
+}
+.fullprofile .icons a svg{
+    font-size: 18px;
+}
+.fullprofile .image .box{
+    min-width: 180px;
+}
+.fullprofile .image{
+    display: flex;
+    justify-content: start;
+    margin-top: 50px;
+    gap: 1rem;
+    width:100%;
+    flex-wrap: wrap;
+}
+.fullprofile .profilepic{
+    max-width: 250px;
+    max-height: 250px;
+    background-position: center;
+    background-size: contain;
+    overflow: hidden;
+    object-fit: fill;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 4px;
+    box-shadow: 1px 1px 5px 0px #aaa,1px 1px 5px 0px #aaa;
+
+}
+.fullprofile .name{
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+}
+.fullprofile .name h5{
+    display: flex;
+    gap:.4rem;
+    flex-wrap: wrap;
+    padding: 0px;
+    margin-bottom: 4px;
+}
+.fullprofile h4{
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.fullprofile h3{
+
+   
+    margin-bottom: 4px;
+}
+.fullprofile .image .name  h5 span{
+    background-color: #dedede;
+    margin: 0px 10px;
+    padding: 2px 6px 2px 6px;
+    color: #555;
+    border-radius: 5px;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    
+}
+.fullprofile .name .icons img{
+    margin-top: 0px;
+    margin: 2px 5px;
+    height: 20px;
+    width: 20px;
+}
+.fullprofile .info{
+    text-align: left;
+}
+.fullprofile .info .bio{
+    background-color: #fff ;
+    box-shadow: 1px 1px 5px 0px #aaa,1px 1px 5px 0px #aaa;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.fullprofile .info .bio p{
+    padding: 0;
+    text-align:justify;
+    color: #555;
+}
+@media only screen and (min-width:800px) {
+    .fullprofile .info{
+        max-width: 60%;
+    }
+    .fullprofile .image{
+        max-width: 60%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+}
+@media only screen and (max-width:800px) {
+    .fullprofile .info{
+        width:90%;
+    }
+    .fullprofile .image{
+        max-width: 90%;
+        justify-content: center;
+    }
+}
+.fullprofile .name label{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.fullprofile .info label{
+    text-align: left;
+    width: 100%;
+    margin: 10px;
+    font-weight: bold;
+    color: #666;
+}
+.fullprofile .info .contact{
+    padding: 15px;
+}
+.fullprofile a{
+    text-decoration: none;
+}
+.fullprofile a:hover{
+    color: blue;
+}
