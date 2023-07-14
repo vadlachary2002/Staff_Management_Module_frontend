@@ -6,6 +6,7 @@
   box-sizing: border-box;
   box-shadow: 0px 0px 2px 2px #aaa;
   align-items: center;
+  z-index: 10;
 }
 .navbar .items ul {
   list-style: none;
