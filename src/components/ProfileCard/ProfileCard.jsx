@@ -5,7 +5,7 @@ import ProfilePic from '../../images/PROFILE.JPG';
 const ProfileCard = () => {
   const navigate = useNavigate();
   const viewProfile = ()=>{
-  navigate('./staff');
+  navigate('/profile');
   return;
   }
   return (

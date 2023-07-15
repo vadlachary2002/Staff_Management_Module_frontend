@@ -7,7 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-  background-color: #eee;
+}
+body{
+  /* background: url('../public/images/rbg.jpg'); */
+  background-repeat: no-repeat;
+  background-color:#000;
+  background-size: cover;
+  object-fit: fill;
+  /* overflow: hidden; */
+  background-position: center;
+  height: 100vh;
+  
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

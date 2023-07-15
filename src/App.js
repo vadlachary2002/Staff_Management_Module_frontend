@@ -1,7 +1,7 @@
 import { FullProfile, NavBar } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
-import { Home, Login } from "./pages";
+import { Home, Login, Staff } from "./pages";
 
 const App = () => {
   return (
@@ -11,7 +11,8 @@ const App = () => {
         <Route path="/" exact element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/staff" element={<FullProfile />} />
+        <Route path="/staff" element={<Staff />} />
+        <Route path="/profile" element={<FullProfile />} />
       </Routes>
     </Router>
   );
