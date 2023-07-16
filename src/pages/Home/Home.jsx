@@ -26,16 +26,19 @@ const Home = () => {
         <div className='home'>
             <div className='head'><h1><label className='dept'>DEPARTMENT</label> <label className='of'>of</label> <label className='cse'>C.S.E</label></h1></div>
             <div className='imageSlide'>
-            <SimpleImageSlider
-            width={window.screen.width-110}
-            height={450}
-            images={Images}
-            showBullets={true}
-            showNavs={true}
-            autoPlay={true}
-            autoPlayDelay={3.0}
-
-          />
+              
+                
+                <SimpleImageSlider
+                  width={window.screen.width-110}
+                  height={450}
+                  images={Images}
+                  showBullets={true}
+                  showNavs={true}
+                  autoPlay={false}
+                  autoPlayDelay={3.0}
+                />
+                
+              
             </div>
             <div className='keys'>
                 <button  onClick={redirectToExplore}>EXPLORE</button>
