@@ -1,42 +1,51 @@
 import React from "react";
 import "./profileCard.scss";
 import { useNavigate } from "react-router-dom";
-import ProfilePic from '../../images/PROFILE.JPG';
-const ProfileCard = () => {
+const ProfileCard = (props) => {
+
+  const { profile } = props;
   const navigate = useNavigate();
   const viewProfile = ()=>{
-  navigate('/profile');
+  navigate('/profile',{state:{profile}});
   return;
   }
   return (
     <div className="profileCard" onClick={viewProfile}>
-      <img className="image" src={ProfilePic}/>
+      <img className="image" alt="" src={profile.image}/>
       <div className="content">
-        <div className="name">V Nagaraju Chary</div>
+        <div className="name">{profile.name}</div>
         <div className="middle">
           <div className="values">
             <span className="field">Designation</span>
-            <span>Faculty</span>
+            <span>{profile.designation}</span>
           </div>
           <div className="values">
             <span className="field">Branch</span>
-            <span>CSE</span>
+            <span>{profile.branch}</span>
           </div>
           <div className="values">
             <span className="field">Experience</span>
-            <span>2 years</span>
+            <span>{profile.experience}</span>
           </div>
           <div className="values">
             <span className="field">Qualification</span>
-            <span>Mtech</span>
+            <span>{profile.qualification}</span>
+          </div>
+          <div className="values">
+            <span className="field">Field</span>
+            <span>{profile.field}</span>
           </div>
         </div>
         <div className="bott">
           <h3>Subjects :</h3>
-          <span>Maths</span>
-          <span>OS</span>
-          <span>COA</span>
-          <span>DM</span>
+        </div>
+        <div className="bott">
+         {
+            profile.subjects.map((subject,index)=>{
+            if(index>7) return '';
+            return <span key={index}>{subject}</span>
+          })
+         }
         </div>
       </div>
     </div>

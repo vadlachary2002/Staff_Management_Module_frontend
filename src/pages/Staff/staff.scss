@@ -3,7 +3,13 @@
         padding: 10px;
         display: flex;
         justify-content: center;
-        input {
+        input{
+          flex: 1 0 320px;
+        }
+        .input{
+          flex: 1 0 120px;
+        }
+        input,.input {
             padding: 10px;
             margin: 20px;
             margin-bottom: 30px;
@@ -20,6 +26,9 @@
         gap:1rem;
         display: flex;
         flex-wrap: wrap;
-        align-items:start;
+        align-items:flex-start;
+        .success{
+          margin: auto;
+        }
       }
 }

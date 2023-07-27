@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {FaUser,FaEyeSlash, FaEye} from 'react-icons/fa';
 import "./Login.scss";
 import { login } from "../../services/Authentication";
+import { UserContext } from "../../Auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [fade, setFade] = useState({ username: false, password: false });
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [fade, setFade] = useState({ staffId: false, password: false });
+  const [user, setUser] = useState({ staffId: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [loginStatus, setLoginStatus] = useState({message:"",status:null});
   const [ passwordVisibility, setPasswordVisibility ] = useState(false);
+
+  const { state, loggedIn } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const updatePasswordVisibility  = ()=>{
     setPasswordVisibility(!passwordVisibility);
@@ -30,25 +35,37 @@ const Login = () => {
     });
   };
   const defaultFade = () => {
-    if (fade.username && fade.password && !user.username && !user.password) {
-      setFade({ username: false, password: false });
+    if (fade.staffId && fade.password && !user.staffId && !user.password) {
+      setFade({ staffId: false, password: false });
     }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const data = await login(user);
-    if(!data){
-      setLoginStatus({message:"Error",status:false});
+    const {error, data} = await login(user);
+    if(error){
+      setLoginStatus({message:data.message,status:false});
     }else{
-      setLoginStatus({message:"Logged In",status:true});
+      console.log("fd",data);
+      loggedIn(data);
+      setLoginStatus({message:data.message,status:true});
+      navigate('/dashboard',{replace:true});
     }
     setLoading(false);
-    setUser({ username: "", password: "" });
+    setUser({ staffId: "", password: "" });
     setTimeout(() => {
       setLoginStatus({message:"",status:null})
     }, 3000);
   };
+  const authorise = ()=>{
+    if(state.user){
+      navigate('/dashboard',{replace:true});
+      return;
+    }
+  }
+  useEffect(()=>{
+    authorise();
+  },[])
   return (
     <div className="login-page" onClick={defaultFade}>
       <form className="loginBox" onSubmit={handleSubmit}>
@@ -56,16 +73,16 @@ const Login = () => {
         <div className="inputs">
           <label
             htmlFor="username"
-            className={fade.username ? "fadeup" : "fadedown"}
+            className={fade.staffId ? "fadeup" : "fadedown"}
           >
-            Username
+            Staff-Id
           </label>
-          <div className="input" onClick={() => updateFade("username", true)}>
+          <div className="input" onClick={() => updateFade("staffId", true)}>
             <input
               type="text"
-              value={user.username}
-              readOnly={!fade.username}
-              onChange={(e) => updateUser("username", e.target.value)}
+              value={user.staffId}
+              readOnly={!fade.staffId}
+              onChange={(e) => updateUser("staffId", e.target.value)}
             />
             <FaUser />
           </div>
