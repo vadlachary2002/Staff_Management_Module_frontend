@@ -4,19 +4,17 @@ import './staff.scss';
 import { getSearchProfiles, getSubjects } from "../../services/Search";
 
 const Staff = ()=>{
-    
+
     const [ search, setSearch ] = useState({name:'',subject:'',field:''});
     const [subjects, setSubjects] =  useState([]);
     const [ error, setError] = useState('');
 
     const [ profiles, setProfiles ] = useState([]);
-    const updateSearch =  (field, value)=>{
-        setSearch((prevSearch)=>{
-            return {
-                ...prevSearch,
-                [field]:value
-            }
-        })
+    const updateSearch =  async (field, value)=>{
+        const newSearch = {...search,[field]:value};
+        console.log("newSearch", newSearch)
+        await fetchProfiles(newSearch)
+        setSearch(newSearch)
     }
     const fetchSubjects = async()=>{
         const { error, data } = await getSubjects();
@@ -34,15 +32,15 @@ const Staff = ()=>{
     }
     useEffect(()=>{
        fetchProfiles(search);
-    },[search])
+    },[])
     useEffect(()=>{
         fetchSubjects();
     },[])
     return (
        <div className="staff">
             <div className="search">
-                <input type="text" placeholder="Search By Name" value={search.name} onChange={(e)=>updateSearch("name",e.target.value)}/> 
-                <select className="input" name="subject" onClick={(e)=>updateSearch("subject",e.target.value)} >
+                <input type="text" placeholder="Search By Name" value={search.name} onChange={(e)=>updateSearch("name",e.target.value)}/>
+                <select className="input" name="subject" onChange={(e)=>updateSearch("subject",e.target.value)} >
                     {error && <option value="">{error}</option>}
                     <option value="">All Subjects</option>
                     {
@@ -51,12 +49,12 @@ const Staff = ()=>{
                         ))
                     }
                 </select>
-                <select  className="input" name="field" onClick={(e)=>updateSearch("field",e.target.value)}  >
+                <select  className="input" name="field" onChange={(e)=>updateSearch("field",e.target.value)}  >
                     <option value="">All Fields</option>
                     <option value="Teaching">Teaching</option>
                     <option value="Non-Teaching">Non-Teaching</option>
                 </select>
-                
+
             </div>
             <div className="staff-row">
                 { profiles.length===0 && <span className="success">No Faculty  is There....</span>}
