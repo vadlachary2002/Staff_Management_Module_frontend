@@ -1,5 +1,5 @@
 
-export const BASE_URL=process.env.BASE_URL;
+export const BASE_URL=`${process.env.REACT_APP_BACKEND_URL}/api`
 
 
 /* PUBLIC URLS => without login access */                               //     Method
